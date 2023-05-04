@@ -2,34 +2,6 @@
 
 
 
-function VersionFunc(){
-  arr=($(echo ${"${1}":1} | awk 'BEGIN{FS=".";OFS=" "} {print $1,$2,$3,$4}'));
-
-  hundred=$((arr[1]))
-  ten=$((arr[2]))
-  one=$((arr[3]))
-
-  if [ $one -lt 50 ] ;then
-    one=$((one + 1));
-  else
-    one=0;
-    if [ $ten -lt 50 ]; then
-        ten=$((ten + 1));
-      else
-        ten=0;
-        hundred=$((hundred + 1))
-    fi;
-
-  fi;
-
-  echo "v$hundred.$ten.$one"
-
-}
-
-
-
-
-
 
 # 增加文件到缓存区
 git add .
@@ -55,13 +27,45 @@ for k in $(git tag -l); do
   echo "${k} success Delete! "
 done
 
-version=$(VersionFunc "$oldVersion")
 
-echo "旧版本【${oldVersion}】>> 新版本 【${version}】"
-# 新版本名
-git tag "$version"
-# 推送tag
-git push origin --tags
+
+  arr=($(echo ${$oldVersion:1} | awk 'BEGIN{FS=".";OFS=" "} {print $1,$2,$3,$4}'));
+
+  hundred=$((arr[1]))
+  ten=$((arr[2]))
+  one=$((arr[3]))
+
+  if [ $one -lt 50 ] ;then
+    one=$((one + 1));
+  else
+    one=0;
+    if [ $ten -lt 50 ]; then
+        ten=$((ten + 1));
+      else
+        ten=0;
+        hundred=$((hundred + 1))
+    fi;
+
+  fi;
+
+  version="v$hundred.$ten.$one"
+
+  echo "旧版本【${oldVersion}】>> 新版本 【${version}】"
+
+  # 新版本名
+  git tag "$version"
+  # 推送tag
+  git push origin --tags
+
+
+
+
+
+
+
+
+
+
 
 ####*********************************************************************************************
 #
