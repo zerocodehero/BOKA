@@ -27,6 +27,7 @@ for k in $(git tag -l); do
   echo "${k} success Delete! "
 done
 
+echo "${oldVersion:1}"
 
 arr=$(echo "${oldVersion:1}" | awk 'BEGIN{FS=".";OFS=" "} {print $1,$2,$3,$4}');
 
