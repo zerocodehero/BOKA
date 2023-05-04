@@ -263,7 +263,7 @@ func paramsHandler(Params ...string) (string, string, string, string) {
 	}
 
 	if len(Params) == 3 {
-		startDate, endDate, user1, user2 = Params[0], Params[1], Params[2], Params[3]
+		startDate, endDate, user1, user2 = Params[0], Params[1], Params[2], Params[2]
 
 	}
 
