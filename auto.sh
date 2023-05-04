@@ -19,18 +19,18 @@ oldVersion=""
 
 for k in $(git tag -l); do
   # 循环删除旧版本
-  git tag -d "$k"
+  git tag -d "${k}"
   # 删除远程版本
-  git push origin :refs/tags/"$k"
+  git push origin :refs/tags/"${k}"
   #
-  oldVersion="$k"
-  echo "$k success Delete! "
+  oldVersion="${k}"
+  echo "${k} success Delete! "
 done
 
 
 arr=$(echo "${oldVersion:1}" | awk 'BEGIN{FS=".";OFS=" "} {print $1,$2,$3}');
 
-echo "123:${arr[1]}${arr[2]}${arr[3]}"
+echo "${arr[1]}${arr[2]}${arr[3]}"
 hundred=$((arr[1]))
 ten=$((arr[2]))
 one=$((arr[3]))
