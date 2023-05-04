@@ -1,15 +1,13 @@
 #!/bin/zsh
 
+# 写注释
+echo "输入新的注释后【回车】确认:"
 
-
+read -r newCommit
 
 # 增加文件到缓存区
 git add .
 
-# 写注释
-echo "输入新的注释后【回车】确认:"
-
-read newCommit
 
 git commit -m "${newCommit}"
 # 推送
@@ -30,7 +28,6 @@ done
 
 arr=($(echo ${oldVersion:1} | awk 'BEGIN{FS=".";OFS=" "} {print $1,$2,$3}'));
 
-echo "asdf:${arr[1]}"
 
 echo "${arr[1]}${arr[2]}${arr[3]}"
 hundred=$((arr[1]))
