@@ -19,12 +19,12 @@ oldVersion=""
 
 for k in $(git tag -l); do
   # 循环删除旧版本
-  git tag -d "${k}"
+  git tag -d "$k"
   # 删除远程版本
-  git push origin :refs/tags/"${k}"
+  git push origin :refs/tags/"$k"
   #
-  oldVersion="${k}"
-  echo "${k} success Delete! "
+  oldVersion="$k"
+  echo "$k success Delete! "
 done
 
 
