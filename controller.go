@@ -4,7 +4,7 @@
  @time: 21:43
 */
 
-package main
+package BOKA
 
 import (
 	"fmt"

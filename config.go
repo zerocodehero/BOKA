@@ -4,7 +4,7 @@
  @time: 21:27
 */
 
-package main
+package BOKA
 
 import (
 	"flag"

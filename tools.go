@@ -4,7 +4,7 @@
  @time: 21:42
 */
 
-package main
+package BOKA
 
 import "time"
 

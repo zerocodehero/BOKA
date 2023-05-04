@@ -4,7 +4,7 @@
  @time: 21:29
 */
 
-package main
+package BOKA
 
 func init() {
 	InitConf()
