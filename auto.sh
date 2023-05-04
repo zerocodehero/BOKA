@@ -29,33 +29,34 @@ done
 
 
 
-  arr=($(echo ${$oldVersion:1} | awk 'BEGIN{FS=".";OFS=" "} {print $1,$2,$3,$4}'));
+arr=($(echo ${"${oldVersion}":1} | awk 'BEGIN{FS=".";OFS=" "} {print $1,$2,$3,$4}'));
 
-  hundred=$((arr[1]))
-  ten=$((arr[2]))
-  one=$((arr[3]))
 
-  if [ $one -lt 50 ] ;then
-    one=$((one + 1));
+hundred=$((arr[1]))
+ten=$((arr[2]))
+one=$((arr[3]))
+
+if [ $one -lt 50 ] ;then
+  one=$((one + 1));
+else
+  one=0;
+  if [ $ten -lt 50 ]; then
+    ten=$((ten + 1));
   else
-    one=0;
-    if [ $ten -lt 50 ]; then
-        ten=$((ten + 1));
-      else
-        ten=0;
-        hundred=$((hundred + 1))
-    fi;
-
+    ten=0;
+    hundred=$((hundred + 1))
   fi;
 
-  version="v$hundred.$ten.$one"
+fi;
 
-  echo "旧版本【${oldVersion}】>> 新版本 【${version}】"
+version="v$hundred.$ten.$one"
 
-  # 新版本名
-  git tag "$version"
+echo "旧版本【${oldVersion}】>> 新版本 【${version}】"
+
+# 新版本名
+git tag "$version"
   # 推送tag
-  git push origin --tags
+git push origin --tags
 
 
 
