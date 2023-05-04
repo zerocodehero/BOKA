@@ -28,9 +28,9 @@ for k in $(git tag -l); do
 done
 
 
-arr=$(echo "${oldVersion:1}" | awk 'BEGIN{FS=".";OFS=" "} {print $1,$2,$3}');
+arr=($(echo "${oldVersion:1}" | awk 'BEGIN{FS=".";OFS=" "} {print $1,$2,$3}'));
 
-echo "asdf:${arr[0]}"
+echo "asdf:${arr[1]}"
 
 echo "${arr[1]}${arr[2]}${arr[3]}"
 hundred=$((arr[1]))
