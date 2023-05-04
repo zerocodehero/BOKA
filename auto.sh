@@ -28,8 +28,7 @@ for k in $(git tag -l); do
 done
 
 
-
-arr=($(echo "${"${oldVersion}":1}" | awk 'BEGIN{FS=".";OFS=" "} {print $1,$2,$3,$4}'));
+arr=$(echo "${oldVersion:1}" | awk 'BEGIN{FS=".";OFS=" "} {print $1,$2,$3,$4}');
 
 
 hundred=$((arr[1]))
